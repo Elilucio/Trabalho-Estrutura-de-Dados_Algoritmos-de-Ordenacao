@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define MAX 10000  // Tamanho máximo da lista
+// Tamanho máximo da lista
+#define MAX 10000
 
 /*struct de um nó*/
 typedef struct Node{
@@ -95,4 +96,5 @@ void inserirFimE(int valor, ListaE *l) {
         }
         l->node[atual].proximo = novo;  // Liga o antigo último nó ao novo nó
     }
+
 }
