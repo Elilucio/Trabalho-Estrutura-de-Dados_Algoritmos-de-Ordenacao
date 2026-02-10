@@ -3,33 +3,20 @@
 
 void insertionSortE(ListaE *l) {
     // Se a lista estiver vazia ou tiver apenas um elemento imediatamente para
-    if (l->inicio == -1 || l->node[l->inicio].proximo == -1) {
-        return;
-    }
-    int novoInicio = -1; // Dita o início da lista enquanto está sendo ordenada, o valor de início da ListaE será atualizado para este no final
-    int atual = l->inicio;   // Percorre a parte da lista ainda não ordenada
-    while (atual != -1) {
-        int proximoNo = l->node[atual].proximo; // Salva o próximo antes de desconectar o nó atual
-        //Inserção no início da lista ou primeira inserção
-        if (novoInicio == -1 || l->node[atual].dado < l->node[novoInicio].dado) {
-            l->node[atual].proximo = novoInicio;
-            novoInicio = atual;
-        } 
-        else {
-            // Procurar o lugar correto na parte ordenada da lista
-            int busca = novoInicio;
-            while (l->node[busca].proximo != -1 && 
-                   l->node[l->node[busca].proximo].dado < l->node[atual].dado) {
-                busca = l->node[busca].proximo;
+        int aux, j;
+        for(int i = 1; i < l->livre-1; i++){
+            aux = l->list[i];
+            for(j = i-1; j >= 0; j--){
+                if (l->list[j] > aux){
+                    l->list[j+1] = l->list[j];
+                }
+                else{
+                    break;
+                }
             }
-            // Insere o nó atual entre "busca" e "busca->proximo"
-            l->node[atual].proximo = l->node[busca].proximo;
-            l->node[busca].proximo = atual;
+            l->list[j + 1] = aux;
         }
-        atual = proximoNo; // Avança para o próximo da parte desordenada
     }
-    l->inicio = novoInicio; // Atualiza o início da lista original para a nova lista ordenada
-}
 
 /* int main(){
     ListaE lista1;
