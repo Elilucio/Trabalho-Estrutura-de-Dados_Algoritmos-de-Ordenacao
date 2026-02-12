@@ -42,3 +42,47 @@ tamanho atual da lista = 6
 Lista -> 10 -> 1 -> 4 -> 7 -> 6 -> 61 
 Lista -> 1 -> 4 -> 6 -> 7 -> 10 -> 61 
 */
+
+void insertionSortD(List **lst) {
+if (*lst == NULL || (*lst)->next == NULL) return;
+    List *sorted = NULL; //Lista auxiliar que estará ordenada
+    List *current = *lst;//O que irá percorrer a lista
+    while (current != NULL){
+        List *next = current->next; //Guarda o ponteiro do próximo nó a ser organizado
+        if (sorted == NULL || sorted->value >= current->value){ //Condição para iniciar a lista e inserir o current no início caso seja menor
+            current->next = sorted;
+            sorted = current;
+        }
+        else{ //Ordenação conforme o insertion sort
+            List *temp = sorted;
+            while (temp->next != NULL && temp->next->value < current->value) 
+            {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+        current = next;
+    }
+    *lst = sorted;
+}
+
+/* int main() {
+    List* minhaLista = NULL;
+    insertAtEnd(&minhaLista, 5);
+    insertAtEnd(&minhaLista, 2);
+    insertAtEnd(&minhaLista, 8);
+    insertAtEnd(&minhaLista, 1);
+    insertAtBeginning(&minhaLista, 30);
+    printList(minhaLista);
+    insertionSortD(&minhaLista);
+    printList(minhaLista);
+    freeList(minhaLista);
+    return 0;
+} */
+
+/*output:
+List: [30, 5, 2, 8, 1] 
+
+List: [1, 2, 5, 8, 30]
+*/
