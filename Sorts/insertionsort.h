@@ -2,7 +2,6 @@
 #include "listaestatica.h"
 
 void insertionSortE(ListaE *l) {
-    // Se a lista estiver vazia ou tiver apenas um elemento imediatamente para
         int aux, j;
         for(int i = 1; i < l->livre-1; i++){
             aux = l->list[i];
@@ -85,4 +84,5 @@ if (*lst == NULL || (*lst)->next == NULL) return;
 List: [30, 5, 2, 8, 1] 
 
 List: [1, 2, 5, 8, 30]
+
 */
