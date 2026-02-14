@@ -4,7 +4,7 @@
 
 void insertionSortE(ListaE *l) {
         int aux, j;
-        for(int i = 1; i < l->livre-1; i++){
+        for(int i = 1; i < l->livre; i++){
             aux = l->list[i];
             for(j = i-1; j >= 0; j--){
                 if (l->list[j] > aux){
@@ -87,5 +87,6 @@ List: [30, 5, 2, 8, 1]
 List: [1, 2, 5, 8, 30]
 
 */
+
 
 
