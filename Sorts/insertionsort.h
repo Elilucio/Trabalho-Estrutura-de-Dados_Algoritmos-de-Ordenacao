@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "../headers/listaestatica.h"
-#include "../header/lists.h"
+#include "../headers/lists.h"
 
 void insertionSortE(ListaE *l) {
         int aux, j;
