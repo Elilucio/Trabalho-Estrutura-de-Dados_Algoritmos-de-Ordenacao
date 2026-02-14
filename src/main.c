@@ -1,4 +1,6 @@
 #include "../headers/lists.h"
+#include "../headers/listaestaatica.h"
+#include "../Sorts/insertionsort"
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
