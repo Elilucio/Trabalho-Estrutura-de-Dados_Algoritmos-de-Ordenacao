@@ -1,99 +1,109 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
-// List struct
+// ----- Estrutura da Lista -----
+
 struct list
 {
     int value;
     struct list *next;
 };
-/*
-Creates a chain list.
 
-Might be initialized as:
+/*
+Cria uma lista encadeada dinâmica.
+
+Deve ser inicializada como:
     List* list = NULL;
 
-And its memory might be free after use:
+Após o uso, a memória deve ser liberada com:
     freeList(list);
-
 */
 typedef struct list List;
 
 
-// -----Insertions-----
+// ----- Inserções -----
 
 /*
-Inserts a new node (element) at the beginning of the list;
-takes the list adress and the new node's value;
+Insere um novo nó no início da lista.
+Recebe:
+    - O endereço da lista: &nome_da_lista (List**)
+    - O valor do novo elemento
 */
 void insertAtBeginning(List **lst, int val)
 {
-    // Allocate a new node
+    // Aloca memória para um novo nó
     List *newNode = (List*) malloc(sizeof(List));
     if (newNode == NULL) return;
 
-    // Point to the current head
+    // Define o valor do novo nó e aponta para o antigo início
     newNode->value = val;
     newNode->next = *lst; 
 
-    // Update head
+    // Atualiza o início da lista
     *lst = newNode;
 }
 
 /*
-Inserts a new node (element) at the end of the list;
-takes the list adress and the new node's value;
+Insere um novo nó no final da lista.
+Recebe:
+    - O endereço da lista: &nome_da_lista (List**)
+    - O valor do novo elemento
 */
 void insertAtEnd(List **lst, int val)
 {
-    // Allocate a new node
+    // Aloca memória para um novo nó
     List* newNode = (List*) malloc(sizeof(List));
     if (newNode == NULL) return;
 
     newNode->value = val;
     newNode->next = NULL;
 
-    if (*lst == NULL) // Empty list case
+    // Caso especial: lista vazia
+    if (*lst == NULL)
     {
         *lst = newNode;
         return;
     }
 
-    // Traverse to the last node
+    // Percorre a lista até o último nó
     List* currNode = *lst;
 
     while (currNode->next != NULL)
         currNode = currNode->next;
 
-    // Update last node's next
+    // Atualiza o ponteiro do último nó
     currNode->next = newNode;
 }
 
 /*
-Inserts a new node (element) to the list after a given element;
-takes the previous node and the new node's value;
+Insere um novo nó (elemento) após um nó específico.
+Recebe:
+    - O nó anterior: prevNode (nome_da_lista->next->next, por exemplo)
+    - O valor do novo elemento
 */
 void insertAfter(List *prevNode, int val)
 {
     if (prevNode == NULL) return;
 
-    // Allocate a new node
+    // Aloca memória para o novo nó
     List *newNode = (List*) malloc(sizeof(List));
     if (newNode == NULL) return;
 
-    // Set its values
+    // Define valor e encadeamento
     newNode->value = val;
     newNode->next = prevNode->next;
 
-    // Update previous node's next
+    // Atualiza o ponteiro do nó anterior
     prevNode->next = newNode;
 }
 
-// ----- Free List -----
+
+// ----- Liberação de Memória -----
 
 /*
-Removes the list and free the memory.
+Remove todos os nós da lista e libera a memória alocada.
 */
 void freeList(List *lst)
 {
@@ -106,8 +116,9 @@ void freeList(List *lst)
 }
 
 /*
-Removes the first node (element) of the list;
-takes the list adress.
+Remove o primeiro nó (elemento) da lista.
+Recebe:
+    - O endereço da lista: &nome_da_lista (List**)
 */
 void removeFirstElement(List **lst)
 {
@@ -119,11 +130,10 @@ void removeFirstElement(List **lst)
 }
 
 
-
-// ----- Length -----
+// ----- Tamanho da Lista -----
 
 /*
-Returns the number of nodes (elements) of an given list.
+Retorna a quantidade de nós da lista.
 */
 int listLength(List *lst)
 {
@@ -136,26 +146,82 @@ int listLength(List *lst)
     return len;
 }
 
-// ----- Printing -----
+
+// ----- Impressão -----
 
 /*
-Prints the values of an given list.
+Exibe os valores armazenados na lista.
+Recebe:
+    - O ponteiro para o início da lista: nome_da_lista (List*)
 */
 void printList(List *lst)
 {
     if (lst == NULL)
     {
-        printf("\nThis list has no elements.\n");
+        printf("\nEsta lista não possui elementos.\n");
         return;
     }
 
     printf("\nList: [");
     int i = 0;
+
     while (lst != NULL)
     {
         printf("%d, ", lst->value);
         lst = lst->next;
         i++;
     }
+
     printf("\b\b]\n");
+}
+
+
+// ----- Preenchimento com Valores Aleatórios -----
+
+/*
+Preenche uma lista encadeada dinâmica com valores aleatórios.
+
+Recebe:
+    - O endereço da lista (&nome_da_lista)
+    - A quantidade de elementos a serem inseridos
+
+A função:
+    - Libera a lista atual (evitando vazamento de memória)
+    - Gera números inteiros aleatórios
+    - Insere os valores no final da lista
+*/
+void fillWithRandomValues(List **lst, int quantity)
+{
+    if (lst == NULL || quantity <= 0) return;
+    /*
+    Se o ponteiro da lista for NULL ou a quantidade for inválida,
+    não há processamento a ser feito.
+    */
+
+    // Libera a lista atual para evitar vazamento de memória
+    freeList(*lst);
+    *lst = NULL;
+    /*
+    Garante que a lista esteja vazia antes de ser preenchida.
+    */
+
+    // Inicializa a semente do gerador de números aleatórios
+    srand((unsigned int) time(NULL));
+    /*
+    Utiliza o tempo atual como semente.
+    Sem isso, a sequência gerada por rand() será sempre a mesma.
+    */
+
+    for (int i = 0; i < quantity; i++)
+    {
+        int randomValue = rand() % 101;
+        /*
+        Gera um número aleatório entre 0 e 100.
+        */
+
+        insertAtEnd(lst, randomValue);
+        /*
+        Insere o valor gerado no final da lista.
+        */
+    }
 }
