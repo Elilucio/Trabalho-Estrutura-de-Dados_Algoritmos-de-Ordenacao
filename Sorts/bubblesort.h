@@ -1,6 +1,6 @@
 #include <stdbool.h>
-#include "../headers/lists.h"
-#include "../headers/listaestatica.h"
+//#include "../headers/lists.h"
+//#include "../headers/listaestatica.h"
 /*
 O Bubble Sort percorre repetidamente a lista, comparando elementos adjacentes
 e trocando-os caso estejam na ordem incorreta.
@@ -128,3 +128,5 @@ void bubbleSortE(ListaE *l)
     e o loop é encerrado.
     */
 }
+
+
