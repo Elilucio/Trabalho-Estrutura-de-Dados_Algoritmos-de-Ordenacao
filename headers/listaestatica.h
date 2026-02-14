@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 // Tamanho máximo da lista
 #define MAX 10000
@@ -69,4 +71,15 @@ void inserirFimE(int valor, ListaE *l) {
     l->list[l->livre] = valor;
     l->livre++;
     printf("tamanho atual da lista = %d\n", l->livre);
+
+}
+/* Preenche a lista estática com uma quantia de termos dita pelo usuário.
+Randomiza entre 0 e 99999
+Recebe quantia de termos a serem adicionados randomicamente e ponteiro de lista (10000, &lista1) */
+void preencherListaE(int quantia, ListaE *l) {
+    srand(time(NULL));
+    for (int i = 0;i < quantia-1; i++){
+        int randnum = rand() % quantia;
+        inserirFimE(randnum, l);
+    }
 }
