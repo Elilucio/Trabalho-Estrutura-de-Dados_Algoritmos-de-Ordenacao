@@ -34,7 +34,8 @@ void bubbleSortD(List *lst)
     */
     bool has_swapped;
     /*
-    indica se houve troca de elementos durante uma passagem pela lista. Se não houver trocas, significa que a lista já está ordenada, e o algoritmo pode ser interrompido mais cedo, evitando iterações desnecessárias.
+    indica se houve troca de elementos durante uma passagem pela lista. Se não houver trocas, significa que a lista já
+    está ordenada, e o algoritmo pode ser interrompido mais cedo, evitando iterações desnecessárias.
     */
 
     do {
