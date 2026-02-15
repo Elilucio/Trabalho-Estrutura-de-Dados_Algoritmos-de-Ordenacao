@@ -1,6 +1,7 @@
 #include <stdbool.h>
 
-#include "../headers/bubblesort.h"
+#include "../headers/lists.h"
+#include "../headers/listaestatica.h"
 
 /*
 O Bubble Sort percorre repetidamente a lista, comparando elementos adjacentes
