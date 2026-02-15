@@ -1,11 +1,12 @@
 #include <stdbool.h>
-//#include "../headers/lists.h"
-//#include "../headers/listaestatica.h"
+
+#include "../headers/bubblesort.h"
+
 /*
 O Bubble Sort percorre repetidamente a lista, comparando elementos adjacentes
 e trocando-os caso estejam na ordem incorreta.
 
-Dessa forma, a lista é dividida em duas partes: a parte ordenada, que cresce a cada
+Dessa forma, a li#sta é dividida em duas partes: a parte ordenada, que cresce a cada
 iteração, e a parte não ordenada, que diminui.
 
 Consequentemente, a cada iteração, o maior elemento da parte não ordenada

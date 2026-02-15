@@ -1,7 +1,11 @@
-#include "../headers/lists.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+
+#include "../headers/lists.h"
+#include "../headers/listaestatica.h"
+#include "../headers/bubblesort.h"
+#include "../headers/insertionsort.h"
 
 int main()
 {
@@ -13,7 +17,10 @@ int main()
    clock_gettime(CLOCK_MONOTONIC, &start);
 
 
-      // Code to be measured
+      fillWithRandomValues(&list, 10000);
+      printList(list);
+      bubbleSortD(list);
+      printList(list);
       
    
    clock_gettime(CLOCK_MONOTONIC, &end);
