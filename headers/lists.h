@@ -168,7 +168,7 @@ void printList(List *lst)
         return;
     }
 
-    printf("\nList: [");
+    printf("List: [");
     int i = 0;
 
     while (lst != NULL)
@@ -178,7 +178,7 @@ void printList(List *lst)
         i++;
     }
 
-    printf("\b\b]\n");
+    printf("\b\b]");
 }
 
 
@@ -207,28 +207,13 @@ void fillWithRandomValues(List **lst, int quantity)
     // Libera a lista atual para evitar vazamento de memória
     freeList(*lst);
     *lst = NULL;
-    /*
-    Garante que a lista esteja vazia antes de ser preenchida.
-    */
-
-    // Inicializa a semente do gerador de números aleatórios
-    srand((unsigned int) time(NULL));
-    /*
-    Utiliza o tempo atual como semente.
-    Sem isso, a sequência gerada por rand() será sempre a mesma.
-    */
 
     for (int i = 0; i < quantity; i++)
     {
         int randomValue = rand() % 101;
-        /*
-        Gera um número aleatório entre 0 e 100.
-        */
+        // Gera um número aleatório entre 0 e 100.
 
         insertAtEnd(lst, randomValue);
-        /*
-        Insere o valor gerado no final da lista.
-        */
     }
 }
 #endif
