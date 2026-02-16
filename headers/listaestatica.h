@@ -1,3 +1,6 @@
+#ifndef LISTA_E
+#define LISTA_E
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -83,3 +86,4 @@ void preencherListaE(int quantia, ListaE *l) {
         inserirFimE(randnum, l);
     }
 }
+#endif

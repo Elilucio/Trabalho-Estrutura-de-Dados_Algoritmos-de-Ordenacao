@@ -1,27 +1,29 @@
+#ifndef LISTS_H
+#define LISTS_H
+
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 
-// ----- Estrutura da Lista -----
+/*
+Lista Encadeada Dinâmica
 
-struct list
-{
+Estrutura de dados linear onde cada elemento (nó) contém um valor e um ponteiro para o
+próximo nó.
+
+Modo de Implementação:
+   
+    List *nome_da_lista = NULL; // Inicializa a lista 
+    
+    ...
+
+    freeList(nome_da_lista); // Libera a memória alocada para a lista depois do uso
+*/
+typedef struct list {
     int value;
     struct list *next;
-};
-
-/*
-Cria uma lista encadeada dinâmica.
-
-Deve ser inicializada como:
-    List* list = NULL;
-
-Após o uso, a memória deve ser liberada com:
-    freeList(list);
-*/
-typedef struct list List;
-
+} List;
 
 // ----- Inserções -----
 
@@ -104,6 +106,8 @@ void insertAfter(List *prevNode, int val)
 
 /*
 Remove todos os nós da lista e libera a memória alocada.
+Recebe:
+    - variável da lista: nome_da_lista (List*)
 */
 void freeList(List *lst)
 {
@@ -134,6 +138,8 @@ void removeFirstElement(List **lst)
 
 /*
 Retorna a quantidade de nós da lista.
+Recebe:
+    - variável da lista: nome_da_lista (List*)
 */
 int listLength(List *lst)
 {
@@ -162,7 +168,7 @@ void printList(List *lst)
         return;
     }
 
-    printf("\nList: [");
+    printf("List: [");
     int i = 0;
 
     while (lst != NULL)
@@ -172,7 +178,7 @@ void printList(List *lst)
         i++;
     }
 
-    printf("\b\b]\n");
+    printf("\b\b]");
 }
 
 
@@ -201,27 +207,13 @@ void fillWithRandomValues(List **lst, int quantity)
     // Libera a lista atual para evitar vazamento de memória
     freeList(*lst);
     *lst = NULL;
-    /*
-    Garante que a lista esteja vazia antes de ser preenchida.
-    */
-
-    // Inicializa a semente do gerador de números aleatórios
-    srand((unsigned int) time(NULL));
-    /*
-    Utiliza o tempo atual como semente.
-    Sem isso, a sequência gerada por rand() será sempre a mesma.
-    */
 
     for (int i = 0; i < quantity; i++)
     {
         int randomValue = rand() % 101;
-        /*
-        Gera um número aleatório entre 0 e 100.
-        */
+        // Gera um número aleatório entre 0 e 100.
 
         insertAtEnd(lst, randomValue);
-        /*
-        Insere o valor gerado no final da lista.
-        */
     }
 }
+#endif
