@@ -12,7 +12,7 @@ aleatórias e o tempo médio foi calculado como o somatório dos
 tempos de cada uma das ordenações na escala de milissegundos
 dividido pelo número total de ordenações.
 
-#Equipe 
+# Equipe 
 
 ELILÚCIO TEIXEIRA FÉLIX FILHO, 
 GABRIEL SOUZA SANTOS,
