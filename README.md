@@ -34,16 +34,16 @@ Para executar os testes de forma correta é necessário:
 
 Ou
 
-# Terminal PowerShell (padrão windows 10/11)
+## Terminal PowerShell (padrão windows 10/11)
 - No terminal, já na pasta src, executar `gcc main.c -o nome_programa`
 - E depois `./nome_programa` ou `./nome_programa.exe`
 
-# CMD
+## CMD
 - No terminal, já na pasta src, executar `gcc main.c -o nome_programa`
 - E depois `nome_programa`
 
-# GitBash/Linux/MacOS
+## GitBash/Linux/MacOS
 - No terminal, já na pasta src, executar `gcc main.c -o nome_programa`
 - E depois `./programa`
 
-## É notório ressaltar que essas execuções assumem que o compilador de c é o gcc, sendo necessário alterá-lo para outros compiladores
+### É notório ressaltar que essas execuções assumem que o compilador de c é o gcc, sendo necessário alterá-lo para outros compiladores
