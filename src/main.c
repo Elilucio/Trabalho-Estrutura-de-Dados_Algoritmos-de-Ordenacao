@@ -18,7 +18,7 @@ int main()
     srand((unsigned int) time(NULL));
 
     struct timespec inicio, fim;
-    double media_ns = 0.0;
+    Long double media_ns = 0.0;
 
     printf("Executando %d iteracoes\n", NUM_ITERACOES);
     for (int i = 0; i < NUM_ITERACOES; i++) {
@@ -27,7 +27,6 @@ int main()
          fillWithRandomValues(&listaD, 100);
          ListaE lista;
          ListaE *lp = &lista;
-         int i = 0;
         inicializarListaE(&lista);
         //preencherListaE(100, &lista); 
         
