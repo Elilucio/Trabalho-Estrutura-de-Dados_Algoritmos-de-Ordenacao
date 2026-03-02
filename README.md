@@ -21,3 +21,29 @@ JOSÉ DHONATAN FERNANDES DE ALMEIDA,
 LETÍCIA MARIA DOS SANTOS DIAS,
 SAMUEL JACKSON MESQUITA LIMA,
 SARAH MENDES TELES.
+
+# Executar os testes
+
+Para executar os testes, será necessário alterar o código do arquivo main.c, mudando o valor de iterações, os métodos de preenchimento, os tipos de listas e qual sort ultilizar. Todos os métodos de preenchimento e sorts estão presentes no arquivo, porém comentados para não comprometimento de resultados.
+
+Para executar os testes de forma correta é necessário:
+- Deixar apenas um tipo de lista sem estar comentada
+- Escolher um método de preenchimento para a lista
+- Escolher um sort para aplicar à lista (Sorts para listas dinânimcas e estáticas têm nomes diferentes, Para estáticas há um "E", e para dinâmicas há um "D")
+- Executar o arquivo main.c caso esteja em uma ide que o permite
+
+Ou
+
+# Terminal PowerShell (padrão windows 10/11)
+- No terminal, já na pasta src, executar `gcc main.c -o nome_programa`
+- E depois `./nome_programa` ou `./nome_programa.exe`
+
+# CMD
+- No terminal, já na pasta src, executar `gcc main.c -o nome_programa`
+- E depois `nome_programa`
+
+# GitBash/Linux/MacOS
+- No terminal, já na pasta src, executar `gcc main.c -o nome_programa`
+- E depois `./programa`
+
+## É notório ressaltar que essas execuções assumem que o compilador de c é o gcc, sendo necessário alterá-lo para outros compiladores
