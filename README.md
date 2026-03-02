@@ -30,7 +30,8 @@ Para executar os testes de forma correta é necessário:
 - Deixar apenas um tipo de lista sem estar comentada
 - Escolher um método de preenchimento para a lista
 - Escolher um sort para aplicar à lista (Sorts para listas dinânimcas e estáticas têm nomes diferentes, Para estáticas há um "E", e para dinâmicas há um "D")
-- Executar o arquivo main.c caso esteja em uma ide que o permite
+
+Após isso executar o arquivo main.c caso esteja em uma ide que o permite
 
 Ou
 
